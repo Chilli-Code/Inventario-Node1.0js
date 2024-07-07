@@ -1,0 +1,102 @@
+<div class="app-content-inicio">
+    <div class="contenedor-ventas">
+        <div class="cont-from-ventas">
+            <h3 style="display:none;" class="titleSell">Escoja El Producto</h3>
+            <div class="contenedor-image">
+                <div class="lottie-animation" data-animation-path="../js/animacionHome.json"></div>
+            </div>
+            <div class="from-ventas">
+                <form id="agregar-producto-form" action=""  method="POST">
+                    <h3>Escoja El Producto</h3>
+                    <label>Seleccionar Producto</label>
+                    <select id="producto" name="productoVenta">
+                        <% products.forEach((producto) => { %>
+                        <option value="<%= producto.id %>" data-precio="<%= producto.precio %>" data-cantidad="<%= producto.cantidad %>"><%= producto.producto %></option>
+                        <% }); %>
+                    </select>
+                    <hr>
+                    <div id="panel_selector"></div>
+                    <label id="signo">Precio</label>
+                    <input type="number" id="precio" name="precioVenta" required readonly >
+                    <hr>
+                    <hr>
+                    <label>Cantidad</label>
+                    <input type="number" id="cantidad" name="cantidadVenta" required="">
+                    <hr>
+                    <label>Medio De Pago</label>
+                    <select name="medio">
+                        <option>Efectivo</option>
+                        <option>Transferencia</option>
+                    </select>
+                    <hr>
+                    <label>Nombre De Cliente</label>
+                    <input type="text" name="nombrecliente">
+                    <hr>
+                    <label>Hora de Venta</label>
+                    <input type="text" name="fechaa" id="clockInicio" readonly="">
+                    <hr>
+                    <label>Codigo</label>
+                    <input type="text" name="codigo" value="96406962920751725" readonly="">
+                    <hr>
+                    <label>Vendedor</label>
+                    <select name="vendedor">
+                        <option>Vendedor1</option>
+                        <option>Vendedor2</option>
+                    </select>
+                    <hr>
+                    <button type="submit" name="enviar" class="filter-button apply agregaar">Confirmar</button>
+                    <!-- <button type="button" name="enviarCarrito" class="filter-button apply agregaar" id="agregar-producto-btn">Agregar</button> -->
+                </form>
+            </div>
+        </div>
+        <div class="receipt"  id="productos-seleccionados">
+            <h1 class="logo">Inventario NodeJS</h1>
+            <div class="address">Calle 82E N 26C-163 Barranquilla</div>
+            <div class="Detalles-transaccion">Efectivo</div>
+            <div class="transactionDetails">
+          Atendido Por: Jorge
+        </div>
+            <div class="centerItem bold">
+          <div class="item"></div>
+        </div>
+            <div class="transactionDetails transactionDetaills">
+                <div class="detail textCantidad">Cantidad</div>
+                <div class="detail textProducto">Producto</div>
+                <div class="detail textPrecio">Precio</div>
+            </div>
+            <div class="paymentDetails bold">
+                <div class="detail">TOTAL</div>
+                <div class="detail">3.99</div>
+            </div>
+            <div class="receiptBarcode">
+                <div class="barcode">
+                    Chambe_Play_Store
+                </div>
+            </div>
+            <div class="survey bold">
+                <p>Codigo</p>
+                <p class="surveyID">6588 4755 3256 544 21</p>
+            </div>
+            <div class="tripSummary">
+                <div class="bold">Mas Informacion:</div>
+                <div class="returnPolicy">
+                    <div class="detail">October 5, 2018</div>
+                    <div class="detail">10:16 AM</div>
+                </div>
+                <div class="detail">Nombre Cliente:</div>
+                <div class="detail returnPolicy">Ginacv</div>
+            </div>
+            <div class="feedback">
+                <div class="break">
+            **********************************
+          </div>
+            </div>
+            <div><h3 class="clickBait">Gracias Por Su Compra</h3></div>
+            <div class="feedback">
+                <div class="break">
+            **********************************
+          </div>
+            </div>
+        </div>
+
+    </div>

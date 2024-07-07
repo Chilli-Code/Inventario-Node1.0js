@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  <link rel="stylesheet" href="containerSell.css">
+  <link rel="stylesheet" href="containerHome.css">
+  <!-- <script src="/node_modules/lottie-web/build/player/lottie.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+  <script src="./js/lottie.min.js"></script>
+
+
+  <%- include ('./partials/header/header'); %>
+</head>
+
+<body>
+  <%- include('./partials/navigation/navigation', {titleMain: titleMain}); %>
+    </div>
+    <%- include('./partials/home/home') %>
+
+      <h2>Productos a vender:</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="selected-products">
+        </tbody>
+      </table>
+
+      <% products.forEach((product)=> { %>
+        <div>
+          <h3>
+            <%= product.name %>
+          </h3>
+          <p>
+            <%= product.description %>
+          </p>
+          <p>Precio: $<%= product.price %>
+          </p>
+          <button class="add-to-selection" data-product-id="<%= product.id %>" data-product-name="<%= product.name %>"
+            data-product-description="<%= product.description %>" data-product-price="<%= product.price %>">Agregar a la
+            selección</button>
+        </div>
+        <% }); %>
+
+          <a href="/cart" class="go-to-cart">Ir al carrito</a>
+
+          <script>
+            const addToSelectionButtons = document.querySelectorAll('.add-to-selection');
+            const selectedProductsContainer = document.getElementById('selected-products');
+
+            addToSelectionButtons.forEach((button) => {
+              button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-product-id');
+                const productName = button.getAttribute('data-product-name');
+                const productDescription = button.getAttribute('data-product-description');
+                const productPrice = button.getAttribute('data-product-price');
+                const productRow = `
+            <tr>
+              <td>${productName}</td>
+              <td>${productDescription}</td>
+              <td>$${productPrice}</td>
+              <td><input type="number" value="1" min="1"></td>
+              <td><button class="remove-from-selection">Eliminar</button></td>
+            </tr>
+          `;
+                selectedProductsContainer.insertAdjacentHTML('beforeend', productRow);
+
+                const removeFromSelectionButtons = document.querySelectorAll('.remove-from-selection');
+                removeFromSelectionButtons.forEach((removeButton) => {
+                  removeButton.addEventListener('click', () => {
+                    const row = removeButton.parentElement.parentElement;
+                    row.remove();
+                  });
+                });
+              });
+            });
+          </script>
+
+
+          <script>
+            const productoSelect = document.getElementById('producto');
+            const precioInput = document.getElementById('precio');
+            const cantidadInput = document.getElementById('cantidad');
+            const agregarProductoBtn = document.getElementById('agregar-producto-btn');
+            const productosSeleccionados = document.getElementById('productos-seleccionados');
+            const imprimirBtn = document.getElementById('imprimir-btn');
+            precioInput.value = precio;
+            cantidadInput.value = cantidad;
+            // Función para actualizar los valores de precio y cantidad cuando cambie la selección de producto
+            function updateProductoInfo() {
+              const selectedOption = productoSelect.options[productoSelect.selectedIndex];
+              const precio = selectedOption.getAttribute('data-precio');
+              const cantidad = selectedOption.getAttribute('data-cantidad');
+              precioInput.value = precio;
+              cantidadInput.value = cantidad;
+            }
+            // Agregar un evento "change" al menú desplegable para llamar a la función de actualización
+            productoSelect.addEventListener('change', updateProductoInfo);
+          </script>
+
+
+
+
+
+
+          <script>
+            function updateTime() {
+              var date = new Date();
+              var hours = date.getHours();
+              var minutes = date.getMinutes();
+              var seconds = date.getSeconds();
+              var day = date.getDate();
+              var month = date.getMonth() + 1;
+              var year = date.getFullYear();
+
+              hours = (hours < 10) ? "0" + hours : hours;
+              minutes = (minutes < 10) ? "0" + minutes : minutes;
+              seconds = (seconds < 10) ? "0" + seconds : seconds;
+              month = (month < 10) ? "0" + month : month;
+              day = (day < 10) ? "0" + day : day;
+
+              var today = day + "/" + month + "/" + year;
+              var time = hours + ":" + minutes + ":" + seconds;
+
+              document.getElementById("clockInicio").value = today + " - " + time;
+            }
+
+            setInterval(updateTime, 1000); // Actualiza la hora cada segundo
+          </script>
+
+          <script>
+            const lottieContainer = document.querySelector('.lottie-animation');
+            const animationPath = lottieContainer.getAttribute('data-animation-path');
+            lottie.loadAnimation({
+              container: lottieContainer,
+              path: animationPath,
+              renderer: 'svg',
+              loop: true,
+              autoplay: true,
+              duration: 2,
+              delay: 1
+            });
+          </script>
+
+          <script src="./partials/navigation/navigation.js"></script>
+          <script src="./partials/dashboard-products/addProduc.js"></script>
+</body>
+
+</html>

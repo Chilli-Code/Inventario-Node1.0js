@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script src="./js/lottie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./navigation.css">
+</head>
+<body>
+    <div style="
+
+    position: static;
+    display: flex;
+    background: #000;
+    width: 100%;
+    height: 126px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    bottom: 88px;
+">
+<p style="
+
+    color: navajowhite;
+    font-size: 1.5em;
+    background: #000;
+    border-radius: 5px;
+    padding: 10px 10px;
+"><b>OPS</b> Parece Que Hay Un <b>Problema......</b></p><br>
+<a href="/" style="
+    margin-top: -20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.4em;
+    position: relative;
+    background-color:var(--action-color);
+    color: #fff;
+    text-decoration: none;
+"><span>Volver</span><i></i></a>
+</div>
+ <div class="lottie-animation" style=" overflow:hidden;" data-animation-path="./js/404.json"></div>
+
+    <script>
+
+
+        const lottieContainer = document.querySelector('.lottie-animation');
+        const animationPath = lottieContainer.getAttribute('data-animation-path');
+        lottie.loadAnimation({
+          container: lottieContainer,
+          path: animationPath,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          duration: 2,
+          delay: 1
+        });
+            </script>

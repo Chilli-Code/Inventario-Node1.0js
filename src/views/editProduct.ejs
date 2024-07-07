@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="/containerSell.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+    <title>
+        <%= title %>
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script src="/js/lottie.min.js"></script>
+
+    <%- include ('./partials/header/header'); %>
+</head>
+
+<body>
+    <%- include('./partials/navigation/navigation'); %>
+
+        </div>
+        <%- include('./partials/container-edit-product/container-edit-product'); %>
+
+            <script>
+                const lottieContainer = document.querySelector('.lottie-animation');
+                const animationPath = lottieContainer.getAttribute('data-animation-path');
+                lottie.loadAnimation({
+                    container: lottieContainer,
+                    path: animationPath,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    duration: 2,
+                    delay: 1
+                });
+            </script>
+            <script src="/partials/navigation/navigation.js"></script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/containerSell.css">
+    <link rel="stylesheet" href="containerHome.css">
+
+    <title>
+        <%= title %>
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script src="/js/lottie.min.js"></script>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
+    <%- include ('./partials/header/header'); %>
+</head>
+
+
+
+<%- include('./partials/navigation/navigation'); %>
+    </div>
+
+    <% if (user && !hasSeenWelcomeAnimation) { %>
+        <script>
+            const lottiePath = './js/welcome-animation.json';
+            Swal.fire({
+                title: 'Bienvenido!',
+                icon: '',
+                html: `<h2 style="color:#22d358f7;"> <%= user.usuario %></h2><div class="lottie-animation" style="height: 230px; overflow:hidden;" data-animation-path="./js/welcome-animation.json"></div>`,
+                confirmButtonText: 'Cerrar',
+                timerProgressBar: true,
+                // timer: 5000
+            });
+        </script>
+        <% hasSeenWelcomeAnimation=true; %>
+            <% } %>
+                <div class="app-content-inicio">
+                    <div class="contenedor-ventas">
+                        <div class="cont-producto">
+                            <h3>Ultimas Ventas</h3>
+                            <div class="contcard">
+                                <div class="card">
+                                    <h2>Producto 1</h2>
+                                </div>
+                                <div class="card">
+                                    <h2>Producto 1</h2>
+                                </div>
+                                <div class="card">
+                                    <h2>Producto 1</h2>
+                                </div>
+                                <div class="card">
+                                    <h2>Producto 1</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="./js/activateLottie.js"></script>
+                <script src="./partials/navigation/navigation.js"></script>
